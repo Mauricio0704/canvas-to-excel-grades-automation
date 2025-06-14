@@ -3,10 +3,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-CANVAS_BASE_URL = os.getenv("CANVAS_BASE_URL")
+CANVAS_BASE_URL = "https://prepanet.instructure.com/api/v1"
 CANVAS_ACCESS_TOKEN = os.getenv("CANVAS_ACCESS_TOKEN")
-
-# from canvas_config import CANVAS_BASE_URL, CANVAS_ACCESS_TOKEN
 
 def get_canvas_headers():
     return {

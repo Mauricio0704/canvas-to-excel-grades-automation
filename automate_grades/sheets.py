@@ -1,9 +1,13 @@
 import time
-from googleapiclient.discovery import build
-from gspread.utils import rowcol_to_a1
 from gspread.exceptions import APIError
 from googleapiclient.errors import HttpError
-from sheets_config import SHEET_ID, WORKSHEET_NAME
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+SHEET_ID = os.getenv("SHEET_ID")
+WORKSHEET_NAME = os.getenv("WORKSHEET_NAME")
+
 from sheets_service import get_worksheet, get_service
 
 sheet = get_worksheet(SHEET_ID, WORKSHEET_NAME)
@@ -95,7 +99,7 @@ def write_grades_of_assignment(column, grades, student_rows):
             "textFormat": textFormatDict,
             "horizontalAlignment": "CENTER"
         }
-        
+
         if isinstance(student_info['grade'], (int, float)) and student_info['grade'] <= 50 and 'comment' in student_info:
             note = student_info['comment']
 

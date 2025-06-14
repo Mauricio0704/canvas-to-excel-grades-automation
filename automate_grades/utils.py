@@ -37,7 +37,7 @@ def get_grades_of_assignment(course_id, assignment):
             continue
 
         if submission['grade']:
-            grades_dict[submission['user_id']]['grade'] = submission['grade']
+            grades_dict[submission['user_id']]['grade'] = float(submission['grade'])
         else:
             grades_dict[submission['user_id']]['grade'] = -2
 

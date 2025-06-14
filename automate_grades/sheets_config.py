@@ -1,2 +1,0 @@
-SHEET_ID = "1HEPPBYPEJ70sf32CnQTznLHnw4XeZOGy6N5qoe0FLys"
-WORKSHEET_NAME = "Calificaciones"

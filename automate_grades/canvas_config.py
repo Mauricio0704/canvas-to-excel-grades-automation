@@ -1,2 +1,0 @@
-CANVAS_BASE_URL = "https://prepanet.instructure.com/api/v1"
-CANVAS_ACCESS_TOKEN = "15066~ZkG2U9QPYmCkEyXhQ3nGBnWmAMWhAX3AcTeBUWYFVMc9nFMP3a862Y2vfmrLDDnA"

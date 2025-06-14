@@ -1,4 +1,4 @@
-from utils import get_courses, get_students_by_sections, get_students_by_course, get_assignments, get_grades_of_assignment, get_sections
+from utils import get_courses, get_students_by_course, get_assignments, get_grades_of_assignment
 from sheets import write_grades_of_assignment, get_rows_of_students
 
 def write_grades_of_all_assignments_of_course(course_id):

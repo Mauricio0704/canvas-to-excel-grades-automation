@@ -1,18 +1,22 @@
 import time
-from sheets_config import SHEET_ID, WORKSHEET_NAME
 from sheets_service import get_worksheet
 from utils import get_courses, get_students_by_sections, get_sections
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+SHEET_ID = os.getenv("SHEET_ID")
+WORKSHEET_NAME = os.getenv("WORKSHEET_NAME")
 
 def set_up_sheet():
     sheet = get_worksheet(SHEET_ID, WORKSHEET_NAME)
     sheet.clear()
 
     sheet.append_row([
-        "ID Materia", "Grupo", "Materia", "ID Alumno", "Nombre Alumno",
-        "Semana 1", "Semana 2", "Semana 3", "Semana 4", "Integradora - Fase 1", "Examen 1", 
-        "Semana 6", "Semana 7", "Semana 8", "Semana 9", "Integradora - Fase 2", "Examen 2",
-        "Semana 11", "Semana 12", "Semana 13", "Integradora - Fase 3", "Examen 3",
+        "ID Materia", "Gpo", "Materia", "ID Alumno", "Nombre del Alumno",
+        "Sem 1 (2.5 %)", "Sem 2 (2.5 %)", "Sem 3 (2.5 %)", "Sem 4 (2.5 %)", "Integ 1 (10 %)", "1° Examen Parc (10 %)", 
+        "Sem 6 (2.5 %)", "Sem 7 (2.5 %)", "Sem 8 (2.5 %)", "Sem 9 (2.5 %)", "Integ 2 (10 %)", "2° Examen Parc (10 %)",
+        "Sem 11 (2.5 %)", "Sem 12 (2.5 %)", "Sem 13 (2.5 %)", "Integ 3 (10 %)", "Final (20 %)",
     ])
     courses = get_courses()
 

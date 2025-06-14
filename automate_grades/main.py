@@ -2,7 +2,6 @@ import argparse
 from set_up import set_up_sheet
 from write_grades_logic import *
 
-
 def main():
     parser = argparse.ArgumentParser(description="Fetch and store student grades from Canvas.")
     parser.add_argument("--setup", action="store_true", help="Run Google Sheets setup")

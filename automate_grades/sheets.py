@@ -100,7 +100,7 @@ def write_grades_of_assignment(column, grades, student_rows):
             "horizontalAlignment": "CENTER"
         }
 
-        if isinstance(student_info['grade'], (int, float)) and student_info['grade'] <= 50 and 'comment' in student_info:
+        if isinstance(student_info['grade'], (int, float)) and student_info['grade'] < 50 and 'comment' in student_info:
             note = student_info['comment']
 
         full_cell_requests.append({

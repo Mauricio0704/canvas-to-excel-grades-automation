@@ -32,16 +32,14 @@ def get_grades_of_assignment(course_id, assignment):
     grades_dict = defaultdict(dict)
 
     for submission in submissions:
-        if submission['submitted_at'] == None:
-            grades_dict[submission['user_id']]['grade'] = -1
-            continue
-
         if submission['grade']:
             grades_dict[submission['user_id']]['grade'] = float(submission['grade'])
+        elif submission['submitted_at'] is None:
+            grades_dict[submission['user_id']]['grade'] = -1
         else:
             grades_dict[submission['user_id']]['grade'] = -2
 
-        if len(submission["submission_comments"]) > 0:
+        if len(submission["submission_comments"]) > 0 and grades_dict[submission['user_id']]['grade'] != -1:
             grades_dict[submission['user_id']]['comment'] = get_tutor_first_comment(submission)
              
 

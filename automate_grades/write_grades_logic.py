@@ -2,7 +2,7 @@ from utils import get_courses, get_students_by_course, get_assignments, get_grad
 from sheets import write_grades_of_assignment, get_rows_of_students
 
 def write_grades_of_all_assignments_of_course(course_id):
-    print(f"Writing grades for all assignments of course {course_id}")
+    print(f"Escribiendo las calificaciones de todas las semanas del curso {course_id}")
     assignments = get_assignments(course_id)
     students = get_students_by_course(course_id)
 
@@ -16,6 +16,8 @@ def write_grades_of_all_assignments_of_course(course_id):
         write_grades_of_assignment(column, grades, student_rows)
 
 def write_grades_of_assignment_of_course(courseID, assignmentID):
+    print(f"Escribiendo las calificaciones de la semana {assignmentID} del curso {courseID}")
+
     students = get_students_by_course(courseID)
 
     if not students: return None
@@ -27,12 +29,14 @@ def write_grades_of_assignment_of_course(courseID, assignmentID):
 
 def write_grades_of_all_assignments_of_all_courses():
     courses = get_courses()
-    print(f"Writing grades for all assignments of all courses")
+    print(f"Escribiendo las calificaciones de todas las semanas de todos los cursos")
 
     for course in courses:
         write_grades_of_all_assignments_of_course(course['id'])
 
 def write_grades_of_assignment_of_all_courses(assignmentID):
+    print(f"Escribiendo las calificaciones de la semana {assignmentID} de todos los cursos")
+
     courses = get_courses()
 
     for course in courses:

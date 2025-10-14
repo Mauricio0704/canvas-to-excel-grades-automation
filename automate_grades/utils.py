@@ -6,14 +6,19 @@ def get_courses():
 
 def get_sections(course_id):
     return make_canvas_request(f"/courses/{course_id}/sections", {"per_page": 100})
-    
+
 
 def get_students_by_sections(section_id):
-    return make_canvas_request(f"/sections/{section_id}/enrollments", params={"role": "StudentEnrollment", "enrollment_state": "active", "per_page": 10}) 
+    enrollments = make_canvas_request(
+        f"/sections/{section_id}/enrollments",
+        params={"role": "StudentEnrollment", "state[]": "active", "per_page": 50}
+    )
+    if not enrollments:
+        return None
+    return [e for e in enrollments if e["enrollment_state"] == "active"]
 
 def get_students_by_course(course_id):
     return make_canvas_request(f"/courses/{course_id}/users", params={"type[]": "StudentEnrollment", "status[]": "active", "per_page": 100}) 
-
 
 def get_assignments(course_id):
     return make_canvas_request(f"/courses/{course_id}/assignments", {"per_page": 16})

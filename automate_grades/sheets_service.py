@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 scopes = ["https://www.googleapis.com/auth/spreadsheets"]
 
 def get_sheets_client():
-    credentials = Credentials.from_service_account_file("credentials.json", scopes=scopes)
+    credentials = Credentials.from_service_account_file("creds.json", scopes=scopes)
     client = gspread.authorize(credentials)
     return client
 
@@ -16,6 +16,6 @@ def get_worksheet(sheet_id, worksheet_name):
     return sheet.worksheet(worksheet_name)
 
 def get_service():
-    credentials = Credentials.from_service_account_file("credentials.json", scopes=scopes)
+    credentials = Credentials.from_service_account_file("creds.json", scopes=scopes)
     service = build("sheets", "v4", credentials=credentials)
     return service

@@ -20,7 +20,7 @@ def get_rows_of_students(courseID, students_ids):
         try:
             course_rows = sheet.findall(f"{courseID}")
         except Exception:
-            print("Retrying to find course rows...")
+            # print("Retrying to find course rows...")
             time.sleep(15)
         else:
             break
@@ -35,7 +35,7 @@ def get_rows_of_students(courseID, students_ids):
             try:
                 student_possible_cell = sheet.findall(f"{student_id}", in_column=4)
             except Exception:
-                print("Retrying to find student possible cell...")
+                # print("Retrying to find student possible cell...")
                 time.sleep(15)
             else:
                 break
@@ -48,8 +48,8 @@ def get_rows_of_students(courseID, students_ids):
 
 def write_grades_of_assignment(column, grades, student_rows):
     sheet_id = sheet._properties['sheetId']
-    assignment_col = column + 6
-
+    assignment_col = column + 5
+    
     baseTextFormatDict = {
         "bold": False,
         "fontSize": 10,
@@ -71,10 +71,10 @@ def write_grades_of_assignment(column, grades, student_rows):
                 break
 
         if not student_row: 
-            print(f"Student ID: {student_id} not found in the sheet")
+            print(f"El estudiante con ID: {student_id} no se encontró en la hoja de datos")
             continue
 
-        print(f"Student ID: {student_id}, Row: {student_row}, Grade: {student_info['grade']}")
+        # print(f"Student ID: {student_id}, Row: {student_row}, Grade: {student_info['grade']}")
 
         textFormatDict["bold"] = False
         note = ''
@@ -129,7 +129,7 @@ def write_grades_of_assignment(column, grades, student_rows):
                     body={"requests": full_cell_requests}
                 ).execute()
             except HttpError as e:
-                print("Rate limit exceeded. Retrying...")
+                # print("Rate limit exceeded. Retrying...")
                 time.sleep(15)
             else:
                 break

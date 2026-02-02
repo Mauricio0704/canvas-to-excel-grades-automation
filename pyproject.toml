@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canvas-to-excel-grades-automation"
+version = "0.1.0"
+description = "Automation to export Canvas grades to Excel"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "google-api-python-client",
+  "google-auth",
+  "google-auth-oauthlib",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
